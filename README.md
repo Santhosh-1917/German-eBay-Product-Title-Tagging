@@ -1,6 +1,3 @@
-
-
-
 # 🧠 German eBay Product Title Tagging (NER using BiLSTM-CRF)
 
 This project performs **Named Entity Recognition (NER)** on German eBay product titles.  
@@ -56,91 +53,86 @@ Input → Embedding (100–300d) → BiLSTM → Linear Layer → CRF → Tag Seq
 | Category 1 | BiLSTM-CRF | **0.78** | 0.93 |
 | Category 2 | BiLSTM-CRF | **0.55** | 0.90 |
 
-*(Expected improvement to ~0.82 F1 with FastText embeddings)*
+*Expected improvement to ~0.82 F1 with FastText embeddings.*
 
 ---
 
 ## 🛠️ Installation
 
-```bash
-git clone https://github.com/<your-username>/German-eBay-Product-Title-Tagging.git
-cd German-eBay-Product-Title-Tagging
-pip install -r requirements.txt
+git clone https://github.com/<your-username>/German-eBay-Product-Title-Tagging.git  
+cd German-eBay-Product-Title-Tagging  
+pip install -r requirements.txt  
 
-Dependencies
+### Dependencies
 
-torch
-torchcrf
-pandas
-numpy
-matplotlib
-scikit-learn
-gensim
-
-
-⸻
-
-##🚀 Training
-
-Option 1 — Baseline (Random embeddings)
-
-model_cat1, best_f1_cat1 = train_one_category(...)
-model_cat2, best_f1_cat2 = train_one_category(...)
-
-Option 2 — With FastText German embeddings
-
-Download FastText German vectors:
-
-cc.de.300.vec.gz
-
-Then run:
-
-cat1_emb_matrix = build_embedding_matrix(cat1_word2idx, ft_model)
-model_cat1, best_f1_cat1 = train_one_category(..., pretrained_matrix=cat1_emb_matrix)
-
-
-⸻
-
-📁 Dataset Description
-
-Column	Description
-Record Number	Unique ID per product title
-Category	Product group (1 or 2)
-Token	Word in the title
-Tag	Labeled aspect (e.g. Hersteller, Farbe, Größe)
-
-
-⸻
-
-💾 Outputs
-	•	bilstm_crf_cat1.pt — Trained model weights for Category 1
-	•	bilstm_crf_cat2.pt — Trained model weights for Category 2
-	•	submission.tsv — Predicted tags for unseen test titles
-
-⸻
-
-🔮 Future Work
-	•	Integrate FastText embeddings for semantic boost
-	•	Experiment with DistilBERT-German for contextual embeddings
-	•	Fine-tune learning rate and dropout
-	•	Add cross-category ensemble for higher robustness
-
-⸻
-
-🧰 Tech Stack
-
-
-⸻
-
-👨‍💻 Author
-
-Santhosh Narayanan Baburaman
-🎓 M.S. Analytics @ University of Southern California
-📧 [your-email@example.com]
-🔗 LinkedIn | GitHub
-
-⸻
-
+torch  
+torchcrf  
+pandas  
+numpy  
+matplotlib  
+scikit-learn  
+gensim  
 
 ---
 
+## 🚀 Training
+
+### Option 1 — Baseline (Random embeddings)
+model_cat1, best_f1_cat1 = train_one_category(...)  
+model_cat2, best_f1_cat2 = train_one_category(...)  
+
+### Option 2 — With FastText German embeddings
+Download FastText German vectors:  
+cc.de.300.vec.gz  
+
+Then run:  
+cat1_emb_matrix = build_embedding_matrix(cat1_word2idx, ft_model)  
+model_cat1, best_f1_cat1 = train_one_category(..., pretrained_matrix=cat1_emb_matrix)  
+
+---
+
+## 📁 Dataset Description
+
+Column | Description  
+--- | ---  
+Record Number | Unique ID per product title  
+Category | Product group (1 or 2)  
+Token | Word in the title  
+Tag | Labeled aspect (e.g. Hersteller, Farbe, Größe)  
+
+---
+
+## 💾 Outputs
+
+- bilstm_crf_cat1.pt — Trained model weights for Category 1  
+- bilstm_crf_cat2.pt — Trained model weights for Category 2  
+- submission.tsv — Predicted tags for unseen test titles  
+
+---
+
+## 🔮 Future Work
+
+- Integrate FastText embeddings for semantic boost  
+- Experiment with DistilBERT-German for contextual embeddings  
+- Fine-tune learning rate and dropout  
+- Add cross-category ensemble for higher robustness  
+
+---
+
+## 🧰 Tech Stack
+
+Python  
+PyTorch  
+scikit-learn  
+pandas  
+NumPy  
+Matplotlib  
+
+---
+
+## 👨‍💻 Author
+
+Santhosh Narayanan Baburaman  
+M.S. Analytics @ University of Southern California  
+[santhosh.nb02@gmail.com]  
+LinkedIn | GitHub
