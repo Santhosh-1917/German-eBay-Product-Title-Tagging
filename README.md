@@ -1,3 +1,6 @@
+
+
+
 # 🧠 German eBay Product Title Tagging (NER using BiLSTM-CRF)
 
 This project performs **Named Entity Recognition (NER)** on German eBay product titles.  
@@ -11,10 +14,10 @@ The model learns to automatically label unseen product titles for structured ext
 This repository implements a **BiLSTM-CRF** model for token-level sequence tagging across two product categories.  
 It also supports optional integration of **FastText German word embeddings** for improved semantic understanding.
 
-### Key Steps:
+### 🔧 Key Steps
 1. **Data Preprocessing**
    - Loads and cleans the training dataset (`Tagged_Titles_Train.tsv`)
-   - Replaces missing tags with most frequent tag per token (or "O")
+   - Replaces missing tags with most frequent tag per token (or `"O"`)
    - Splits by category and groups by record number
 
 2. **Vocabulary & Encoding**
@@ -28,7 +31,7 @@ It also supports optional integration of **FastText German word embeddings** for
    - Conditional Random Field (CRF) for structured decoding
 
 4. **Training & Evaluation**
-   - Early stopping, learning rate scheduling, F1 tracking
+   - Early stopping, learning-rate scheduling, and F1 tracking
    - Macro F1-score, accuracy, and classification report per category
 
 ---
@@ -37,12 +40,12 @@ It also supports optional integration of **FastText German word embeddings** for
 
 Input → Embedding (100–300d) → BiLSTM → Linear Layer → CRF → Tag Sequence
 
-- **Embedding**: Random or pretrained (FastText German)
+- **Embedding**: Random or pretrained (FastText German)  
 - **Hidden Dim**: 128–256  
-- **Optimizer**: Adam (lr=1e-3)
+- **Optimizer**: Adam (lr = 1e-3)  
 - **Regularization**: Dropout 0.3  
 - **Loss Function**: Negative log-likelihood from CRF  
-- **Metrics**: Macro F1-score, Accuracy
+- **Metrics**: Macro F1-score, Accuracy  
 
 ---
 
@@ -53,15 +56,15 @@ Input → Embedding (100–300d) → BiLSTM → Linear Layer → CRF → Tag Seq
 | Category 1 | BiLSTM-CRF | **0.78** | 0.93 |
 | Category 2 | BiLSTM-CRF | **0.55** | 0.90 |
 
-*(Expected improvement to ~0.82+ F1 with FastText embeddings)*
+*(Expected improvement to ~0.82 F1 with FastText embeddings)*
 
 ---
 
 ## 🛠️ Installation
 
 ```bash
-git clone https://github.com/<your-username>/german-ebay-ner.git
-cd german-ebay-ner
+git clone https://github.com/<your-username>/German-eBay-Product-Title-Tagging.git
+cd German-eBay-Product-Title-Tagging
 pip install -r requirements.txt
 
 Dependencies
@@ -74,7 +77,10 @@ matplotlib
 scikit-learn
 gensim
 
-🚀 Training
+
+⸻
+
+##🚀 Training
 
 Option 1 — Baseline (Random embeddings)
 
@@ -92,18 +98,16 @@ Then run:
 cat1_emb_matrix = build_embedding_matrix(cat1_word2idx, ft_model)
 model_cat1, best_f1_cat1 = train_one_category(..., pretrained_matrix=cat1_emb_matrix)
 
+
+⸻
+
 📁 Dataset Description
 
-Column
-Description
-Record Number
-Unique ID per product title
-Category
-Product group (1 or 2)
-Token
-Word in the title
-Tag
-Labeled aspect (e.g. Hersteller, Farbe, Größe)
+Column	Description
+Record Number	Unique ID per product title
+Category	Product group (1 or 2)
+Token	Word in the title
+Tag	Labeled aspect (e.g. Hersteller, Farbe, Größe)
 
 
 ⸻
@@ -115,17 +119,28 @@ Labeled aspect (e.g. Hersteller, Farbe, Größe)
 
 ⸻
 
-📈 Future Work
-	•	Integrate FastText embeddings (semantic boost)
+🔮 Future Work
+	•	Integrate FastText embeddings for semantic boost
 	•	Experiment with DistilBERT-German for contextual embeddings
-	•	Fine-tune learning rates and dropout
+	•	Fine-tune learning rate and dropout
 	•	Add cross-category ensemble for higher robustness
+
+⸻
+
+🧰 Tech Stack
+
 
 ⸻
 
 👨‍💻 Author
 
 Santhosh Narayanan Baburaman
-M.S. Analytics @ University of Southern California
-📧 [your-email]
-🔗 [LinkedIn / Portfolio / GitHub]
+🎓 M.S. Analytics @ University of Southern California
+📧 [your-email@example.com]
+🔗 LinkedIn | GitHub
+
+⸻
+
+
+---
+
